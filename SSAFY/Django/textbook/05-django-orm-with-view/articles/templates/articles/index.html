@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>메인 페이지</h1>
+  <hr>
+  {% comment %} 전체 게시글 출력 {% endcomment %}
+  {% for article in articles %}
+    <p>글 번호: {{ article.pk }}</p>
+    {% comment %} <a href="{% url "articles:detail"%}"> {% endcomment %}
+    {% comment %} NoReverseMatch at 에러가 뜸 -> article.pk 필요 {% endcomment %}
+    <a href="{% url "articles:detail" article.pk %}" >
+    글 제목: {{ article.title }}
+    </a>
+    <p>글 내용: {{ article.content }}</p>
+    <hr>
+  {% endfor %}
+</body>
+</html>
